@@ -19,8 +19,12 @@ public abstract class Controller : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        // Make decisions
-        MakeDecisions();
+        if (pawn != null)
+        {
+            // Make decisions
+            MakeDecisions();
+        }
+
     }
 
     protected abstract void MakeDecisions();

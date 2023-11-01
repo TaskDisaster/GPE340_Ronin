@@ -1,3 +1,4 @@
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,32 @@ using UnityEngine.AI;
 
 public class AIController : Controller
 {
-    [HideInInspector] public NavMeshAgent agent;
+    #region AI Data
+    [Header("AI Data")]
+    /// <summary>
+    /// The distance of how close the AI gets to the player
+    /// </summary>
+    [Tooltip("The distance the AI must stop at")]
     public float stoppingDistance;
+
+    /// <summary>
+    /// The transform of the target
+    /// </summary>
+    [Tooltip("The transform of the target")]
     public Transform targetTransform;
+
+    /// <summary>
+    /// Reference to the NaveMesh agent
+    /// </summary>
+    [HideInInspector] 
+    public NavMeshAgent agent;
+
+    /// <summary>
+    /// The desired velocity that the pawn moves at
+    /// </summary>
+    [Tooltip("The desired velocity that the pawn moves at")]
     private Vector3 desiredVelocity = Vector3.zero;
+    #endregion
 
     // Start is called before the first frame update
     protected override void Start()
@@ -38,9 +61,6 @@ public class AIController : Controller
         // set the stopping distance
         agent.stoppingDistance = stoppingDistance;
 
-        // Set the max sped of the AI from the pawn data
-        agent.speed = pawn.maxMoveSpeed;
-
         // Set the max rotation speed of the AI from pawn data
         agent.angularSpeed = pawn.maxRotationSpeed;
 
@@ -65,7 +85,7 @@ public class AIController : Controller
 
     protected override void MakeDecisions()
     {
-        // Set our NaveMeshAgent to seek our target
+        // Set our NavMeshAgent to seek our target
         agent.SetDestination(targetTransform.position);
 
         // Find the velocity that the agent wants to move in order to follow the path

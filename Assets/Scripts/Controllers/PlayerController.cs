@@ -20,9 +20,6 @@ public class PlayerController : Controller
         // Move based on Input axes
         Vector3 moveVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        // Convert our world space to local space
-        moveVector = pawn.transform.InverseTransformDirection(moveVector);
-
         // Tell the pawn to move
         pawn.Move(moveVector);
 
@@ -61,6 +58,30 @@ public class PlayerController : Controller
         else
         {
             pawn.isSprinting = false;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            pawn.shooter.OnTriggerPull.Invoke();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            pawn.shooter.OnTriggerRelease.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            pawn.healthComp.Heal(20);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            pawn.healthComp.TakeDamage(20);
+        }
+
+        if (pawn.healthComp.currentHealth <= 0)
+        {
+            UnpossessPawn();
         }
     }
 }
