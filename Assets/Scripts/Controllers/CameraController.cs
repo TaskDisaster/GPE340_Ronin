@@ -11,10 +11,14 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Calculate where our camera wants to be
-        Vector3 newPosition = new Vector3(target.position.x, target.position.y + distance, target.position.z);
+        if (target != null)
+        {
+            // Calculate where our camera wants to be
+            Vector3 newPosition = new Vector3(target.position.x, target.position.y + distance, target.position.z);
 
-        // Move towards the target position
-        transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
+            // Move towards the target position
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
+        }
+
     }
 }

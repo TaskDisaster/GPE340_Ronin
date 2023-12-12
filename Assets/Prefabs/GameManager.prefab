@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2528826749639244967
+--- !u!1 &6910777289652220605
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5253407601725332548}
-  - component: {fileID: 3117146166793136039}
+  - component: {fileID: 6572918678785773570}
+  - component: {fileID: 3882969999403537407}
   m_Layer: 0
-  m_Name: AIController
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5253407601725332548
+--- !u!4 &6572918678785773570
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2528826749639244967}
+  m_GameObject: {fileID: 6910777289652220605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,19 +32,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3117146166793136039
+--- !u!114 &3882969999403537407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2528826749639244967}
+  m_GameObject: {fileID: 6910777289652220605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b16658b2d596d040be10999a5b16f1a, type: 3}
+  m_Script: {fileID: 11500000, guid: dabf50510589d2246b241bca0ef3e699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 0}
-  stoppingDistance: 8
-  targetTransform: {fileID: 0}
-  agent: {fileID: 0}
+  playerControllerPrefab: {fileID: 4982092400802543072, guid: c908e4e3e32db774185c5f4700c98955, type: 3}
+  playerPawnPrefab: {fileID: 8535011597703762662, guid: 098b4cf50dcdaff40a64c7ef52160b17, type: 3}
+  enemyControllerPrefab: {fileID: 0}
+  enemyPawnPrefab: {fileID: 0}
+  spawnManager: {fileID: 0}
+  wave: 0
+  camController: {fileID: 0}
+  OnGameStart:
+    m_PersistentCalls:
+      m_Calls: []

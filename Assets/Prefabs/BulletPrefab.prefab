@@ -260,5 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5376a2eacb724d47a775acaa38924d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletLifetime: 3
   rb: {fileID: 5604845262026475371}
   owner: {fileID: 0}

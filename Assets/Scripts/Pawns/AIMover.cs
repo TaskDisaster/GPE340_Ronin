@@ -40,7 +40,7 @@ public class AIMover : Mover
         //Set defaults on the agent
         agent.updatePosition = false;
         agent.updateRotation = false;
-        agent.stoppingDistance = 0.5f; //We will not use the Agent's stopping distance.
+        //agent.stoppingDistance = 0.5f; //We will not use the Agent's stopping distance.
         agent.acceleration = 15; //Apply a higher acceleration for better pathfinding. The root motion handles speed and acceleration itself.
 
         //Get the animator component

@@ -1,6 +1,7 @@
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -85,6 +86,23 @@ public class AIController : Controller
 
     protected override void MakeDecisions()
     {
+        // Stop everything if pawn is killed
+        if (pawn.healthComp.currentHealth <= 0)
+        {
+            pawn.shooter.OnTriggerRelease.Invoke();
+            GameManager.Instance.currentEnemyPawns.Remove(pawn);
+            pawn.weaponManager.Unequip();
+            UnpossessPawn();
+            Destroy(gameObject);
+            return;
+        }
+
+        if (targetTransform == null)
+        {
+            targetTransform = gameObject.transform;
+            return;
+        }
+
         // Set our NavMeshAgent to seek our target
         agent.SetDestination(targetTransform.position);
 
@@ -96,5 +114,24 @@ public class AIController : Controller
 
         // Look towards the player
         pawn.RotateToLookAt(targetTransform.position);
+
+        // Get the distance from pawn to target
+        float distance = CalculateDistance(pawn.transform, targetTransform);
+
+        // If less than or equal to stoppingDistance, reign fire
+        if (distance <= stoppingDistance)
+        {
+            pawn.shooter.OnTriggerPull.Invoke();
+        }
+        else
+        {
+            pawn.shooter.OnTriggerRelease.Invoke();
+        }
+    }
+
+    protected float CalculateDistance(Transform self, Transform target)
+    {
+        float distance = Vector3.Distance(self.position, target.position);
+        return distance;
     }
 }

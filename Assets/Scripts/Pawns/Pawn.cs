@@ -6,16 +6,20 @@ public abstract class Pawn : MonoBehaviour
 {
     public Controller controller;
     public Mover mover;
-    public ProjectileWeapon shooter;
+    public Weapon shooter;
+    public WeaponManager weaponManager;
     public Health healthComp;
     public float maxMoveSpeed;
     public float maxRotationSpeed;
     public bool isSprinting;
+    [Range(0,1)]
+    public float weaponAccuracyPercent;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        mover = GetComponent<Mover>();
+        mover = gameObject.GetComponent<Mover>();
+        weaponManager = gameObject.GetComponent<WeaponManager>();
     }
 
     // Update is called once per frame

@@ -61,8 +61,8 @@ public class PlayerMover : Mover
     public void OnAnimatorMove()
     {
         // After the animation runs
-
         transform.position += animator.deltaPosition;
         transform.rotation *= animator.deltaRotation;
+
     }
 }
