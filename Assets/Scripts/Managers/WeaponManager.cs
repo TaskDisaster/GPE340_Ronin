@@ -66,6 +66,12 @@ public class WeaponManager : MonoBehaviour
         equippedWeapon.transform.rotation = attachmentPoint.transform.rotation;
         // Set it to the player's shooter
         pawn.shooter = equippedWeapon;
+
+        // Set the text to equippedWeapon
+        if (pawn.uiManager != null)
+        {
+            pawn.uiManager.weaponText.text = GetBaseName(equippedWeapon);
+        }
     }
 
     /// <summary>
@@ -81,6 +87,28 @@ public class WeaponManager : MonoBehaviour
             // Set weapon to null
             equippedWeapon = null;
         }
+
+        // Set the text appropriately
+        if (pawn.uiManager != null)
+        {
+            pawn.uiManager.weaponText.text = "None";
+        }
+    }
+
+    /// <summary>
+    /// Returns the base name of a weapon without any artifacts
+    /// </summary>
+    public string GetBaseName(Weapon weapon)
+    {
+        string fullName = weapon.name;
+        string baseName = fullName;
+
+        if (fullName.Contains("(Clone)"))
+        {
+            baseName = fullName.Replace("(Clone)", "").Trim();
+        }
+
+        return baseName;
     }
 
     public void OnAnimatorIK(int layerIndex)

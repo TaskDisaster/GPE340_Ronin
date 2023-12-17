@@ -1869,10 +1869,10 @@ GameObject:
   - component: {fileID: 2242486917729662403}
   - component: {fileID: 7735693114613773554}
   - component: {fileID: 5777998970171229949}
-  - component: {fileID: 1285029604704027279}
   - component: {fileID: 2806068576419534413}
   - component: {fileID: 9060353131960176147}
   - component: {fileID: 921801682014009764}
+  - component: {fileID: -7544555754850209608}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1938,7 +1938,7 @@ MonoBehaviour:
   shooter: {fileID: 0}
   weaponManager: {fileID: 9060353131960176147}
   healthComp: {fileID: 7735693114613773554}
-  ragdollControls: {fileID: 921801682014009764}
+  uiManager: {fileID: 0}
   maxMoveSpeed: 1
   maxRotationSpeed: 360
   isSprinting: 1
@@ -2056,6 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de7410a47614f543961ba6ab30e21a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawn: {fileID: 0}
   currentHealth: 100
   maxHealth: 100
   OnHeal:
@@ -2105,20 +2106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthComp: {fileID: 7735693114613773554}
   timeBeforeDestroy: 5
---- !u!114 &1285029604704027279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4600151104086797499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b3d750d8fd52a4d8572e35fd16429c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthComp: {fileID: 7735693114613773554}
-  timeBeforeDestroy: 5
 --- !u!114 &2806068576419534413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,7 +2131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultWeapon: {fileID: 2464480628424111812, guid: c8e18c30a855d884e80bbe3b81c6f7d2, type: 3}
-  randomStart: 0
+  randomStart: 1
   randomWeapon:
   - {fileID: 2464480628424111812, guid: c8e18c30a855d884e80bbe3b81c6f7d2, type: 3}
   - {fileID: 2464480628424111812, guid: fa7d7fb1883338942bc09bb8b79eaa41, type: 3}
@@ -2166,6 +2153,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRagdoll: 0
+--- !u!114 &-7544555754850209608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600151104086797499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385c6332478e6744b878275bf57207cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+    drops:
+    - itemToDrop: {fileID: 6904302952222132749, guid: f9ba6789d81966e4cab85fc5489c1947, type: 3}
+      weight: 10
+    - itemToDrop: {fileID: 6904302952222132749, guid: 248602d31483b6f46b52df1f9194b71e, type: 3}
+      weight: 10
+    - itemToDrop: {fileID: 6904302952222132749, guid: fcc13c2b55fd0f54fa8f08193e6672e1, type: 3}
+      weight: 10
+    - itemToDrop: {fileID: 0}
+      weight: 80
+    - itemToDrop: {fileID: 1233993078482372969, guid: 57accacb24e7e42489226e2ac1b047c7, type: 3}
+      weight: 20
+  densityArray: []
+  offset: {x: 0, y: 1, z: 0}
 --- !u!1 &5081279213972216185
 GameObject:
   m_ObjectHideFlags: 0

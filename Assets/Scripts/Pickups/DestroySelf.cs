@@ -6,6 +6,7 @@ using UnityEngine;
 public class DestroySelf : MonoBehaviour
 {
     private Pickup pickup;
+    public float timeTillDestroy = 0;
 
     // Start is called before the first frame update
     void Start()

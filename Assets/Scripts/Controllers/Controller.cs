@@ -24,7 +24,6 @@ public abstract class Controller : MonoBehaviour
             // Make decisions
             MakeDecisions();
         }
-
     }
 
     protected abstract void MakeDecisions();

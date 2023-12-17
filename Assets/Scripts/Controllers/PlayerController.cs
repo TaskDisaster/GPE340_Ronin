@@ -15,6 +15,14 @@ public class PlayerController : Controller
         base.Update();
     }
 
+    protected override void Start()
+    {
+        // Connect the player to the UIManager
+        pawn.uiManager = FindAnyObjectByType<PlayerUIManager>();
+
+        base.Start();
+    }
+
     protected override void MakeDecisions()
     {
         // Move based on Input axes
@@ -69,19 +77,13 @@ public class PlayerController : Controller
             pawn.shooter.OnTriggerRelease.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            pawn.healthComp.Heal(20);
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            pawn.healthComp.TakeDamage(20);
-        }
-
         if (pawn.healthComp.currentHealth <= 0)
         {
             UnpossessPawn();
+
+            GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
+
+            Destroy(gameObject);
         }
     }
 }

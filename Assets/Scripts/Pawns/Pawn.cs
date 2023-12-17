@@ -4,16 +4,20 @@ using UnityEngine;
 
 public abstract class Pawn : MonoBehaviour
 {
+    [Header("Pawn Variables")]
+    #region Variables
     public Controller controller;
     public Mover mover;
     public Weapon shooter;
     public WeaponManager weaponManager;
     public Health healthComp;
+    public PlayerUIManager uiManager;
     public float maxMoveSpeed;
     public float maxRotationSpeed;
     public bool isSprinting;
     [Range(0,1)]
     public float weaponAccuracyPercent;
+    #endregion
 
     // Start is called before the first frame update
     protected virtual void Start()

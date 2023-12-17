@@ -3251,7 +3251,7 @@ MonoBehaviour:
   shooter: {fileID: 0}
   weaponManager: {fileID: 3028743802182503030}
   healthComp: {fileID: 4230461092036256735}
-  ragdollControls: {fileID: 0}
+  uiManager: {fileID: 0}
   maxMoveSpeed: 1
   maxRotationSpeed: 360
   isSprinting: 0
@@ -3344,8 +3344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de7410a47614f543961ba6ab30e21a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawn: {fileID: 0}
   currentHealth: 100
-  maxHealth: 100000
+  maxHealth: 100
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
