@@ -52,6 +52,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   timeTillDestroyed: 10
+  pickupSound: {fileID: 8300000, guid: 655424eff40d55b488157fcf773a41d2, type: 3}
   weapon: {fileID: 2464480628424111812, guid: fa7d7fb1883338942bc09bb8b79eaa41, type: 3}
 --- !u!114 &-7645995219360899003
 MonoBehaviour:

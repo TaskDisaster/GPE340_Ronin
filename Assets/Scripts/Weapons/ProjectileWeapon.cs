@@ -76,9 +76,13 @@ public class ProjectileWeapon : Weapon
                     // Set time shot
                     lastTimeShot = Time.time;
 
-                    // Do effects upon shooting
-                    OnFire.Invoke();
-                
+                    // Only do the effects once
+                    if (i < 1)
+                    {
+                        // Do effects upon shooting
+                        OnFire.Invoke();
+                    }
+
                     if (!autoFire)
                     {
                         triggerPulled = false;

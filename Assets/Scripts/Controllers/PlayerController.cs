@@ -79,6 +79,8 @@ public class PlayerController : Controller
 
         if (pawn.healthComp.currentHealth <= 0)
         {
+            pawn.shooter.OnTriggerRelease.Invoke();
+
             UnpossessPawn();
 
             GameManager.Instance.ChangeState(GameManager.GameState.GameOver);

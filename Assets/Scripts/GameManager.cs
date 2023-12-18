@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour
     [Header("Misc Variables")]
     #region Misc
     public CameraController camController;
+    public AudioClip mainMenuTrack;
+    public AudioClip gameplayTrack;
+    public bool isPlaying = false;
     #endregion
 
     // Awake is called before another other method
@@ -130,6 +133,13 @@ public class GameManager : MonoBehaviour
 
                 ActivateMainMenuState();
 
+                // Play the MainMenu music
+                if (!isPlaying)
+                {
+                    AudioManager.Instance.PlayMusic(mainMenuTrack);
+                    isPlaying = true;
+                }
+
                 break;
 
             case GameState.Options:
@@ -140,14 +150,25 @@ public class GameManager : MonoBehaviour
 
             case GameState.Gameplay:
 
+                ActivateGameplayState();
+
                 // Resume Game if time is paused
                 if (pausedGame == true)
                 {
                     Time.timeScale = 1;
+
+                    // Also resume soundtrack
+                    AudioManager.Instance.UnPause();
+
                     pausedGame = false;
                 }
 
-                ActivateGameplayState();
+                // Play the soundtrack
+                if (isPlaying)
+                {
+                    AudioManager.Instance.PlayMusic(gameplayTrack);
+                    isPlaying = false;
+                }
 
                 // Spawn the Player once
                 if (playerSpawned != true)
@@ -185,6 +206,9 @@ public class GameManager : MonoBehaviour
 
                 ActivateGameOverState();
 
+                // Stop playing the sound track
+                AudioManager.Instance.Stop();
+                isPlaying = false;
 
                 // Transition to Main Menu
                 if (Input.GetKey(transitionKey))
@@ -207,6 +231,10 @@ public class GameManager : MonoBehaviour
                 if (pausedGame == false)
                 {
                     Time.timeScale = 0;
+
+                    // pause the soundtrack too
+                    AudioManager.Instance.Pause();
+
                     pausedGame = true;
                 }
 
@@ -330,7 +358,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Get the lucky spawn
-        SpawnArea luckySpawn = spawnManager.enemySpawn[Random.Range(0, spawnManager.playerSpawn.Count)];
+        SpawnArea luckySpawn = spawnManager.enemySpawn[Random.Range(0, spawnManager.enemySpawn.Count)];
 
         // Then spawn the enemy
         GameObject newControllerObj = Instantiate(enemyControllerPrefab, Vector3.zero, Quaternion.identity);

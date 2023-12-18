@@ -40,6 +40,11 @@ public class HealthPickup : Pickup
             pawn.healthComp.Heal(healAmount);
         }
 
-        base.PerfomPickup(other);
+        if (pickupSound != null)
+        {
+            AudioManager.Instance.Play(pickupSound);
+        }
+
+        OnPickup.Invoke();
     }
 }

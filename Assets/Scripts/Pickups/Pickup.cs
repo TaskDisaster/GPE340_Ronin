@@ -11,6 +11,7 @@ public class Pickup : MonoBehaviour
 
     [Header("Variables")]
     public float timeTillDestroyed;
+    public AudioClip pickupSound;
 
     public virtual void Start()
     {
@@ -32,6 +33,11 @@ public class Pickup : MonoBehaviour
         if (other.gameObject.GetComponent<Pawn>() != null)
         {
             OnPickup.Invoke();
+        }
+
+        if (pickupSound != null)
+        {
+            AudioManager.Instance.Play(pickupSound);
         }
     }
 }

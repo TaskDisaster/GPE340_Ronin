@@ -12,6 +12,7 @@ public abstract class Pawn : MonoBehaviour
     public WeaponManager weaponManager;
     public Health healthComp;
     public PlayerUIManager uiManager;
+    public RagdollControls ragdollControls;
     public float maxMoveSpeed;
     public float maxRotationSpeed;
     public bool isSprinting;
@@ -24,6 +25,7 @@ public abstract class Pawn : MonoBehaviour
     {
         mover = gameObject.GetComponent<Mover>();
         weaponManager = gameObject.GetComponent<WeaponManager>();
+        ragdollControls = gameObject.GetComponent<RagdollControls>();
     }
 
     // Update is called once per frame

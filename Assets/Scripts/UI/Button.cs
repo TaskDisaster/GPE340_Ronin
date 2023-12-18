@@ -14,6 +14,7 @@ public class Button : MonoBehaviour
         {
             GameManager.Instance.ChangeState(GameManager.GameState.MainMenu);
         }
+        PlaySound();
     }
 
     public void GoToOptions()
@@ -22,6 +23,7 @@ public class Button : MonoBehaviour
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Options);
         }
+        PlaySound();
     }
 
     public void GoToCredits()
@@ -30,6 +32,7 @@ public class Button : MonoBehaviour
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Credits);
         }
+        PlaySound();
     }
 
     public void BeginGame()
@@ -38,6 +41,7 @@ public class Button : MonoBehaviour
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Gameplay);
         }
+        PlaySound();
     }
 
     public void QuitGame()
@@ -51,6 +55,7 @@ public class Button : MonoBehaviour
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Pause);
         }
+        PlaySound();
     }
 
     public void RestartGame()
@@ -59,6 +64,7 @@ public class Button : MonoBehaviour
         {
             GameManager.Instance.ChangeState(GameManager.GameState.Restart);
         }
+        PlaySound();
     }
 
     public void GoBackToPreviousState()
@@ -66,6 +72,15 @@ public class Button : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.ChangeState(GameManager.Instance.previousState);
+        }
+        PlaySound();
+    }
+
+    public void PlaySound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.Play(buttonSound);
         }
     }
 }

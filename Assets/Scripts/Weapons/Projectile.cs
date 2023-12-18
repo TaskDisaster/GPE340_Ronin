@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
@@ -55,7 +54,11 @@ public class Projectile : MonoBehaviour
         // If it's not another projectile, destroy self
         if (other.gameObject.GetComponent<Projectile>() == null)
         {
-            Destroy(gameObject);
+            // Or pickup
+            if (other.gameObject.GetComponent<Pickup>() == null)
+            {
+                Destroy(gameObject);
+            }
         }
 
     }
